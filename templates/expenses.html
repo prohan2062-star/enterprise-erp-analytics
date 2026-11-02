@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+{% block title %}Expense Management | Enterprise ERP{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark px-4">
+   <a href="{{ url_for('export_report_pdf', report_type='expenses') }}"
+   class="btn btn-light btn-sm">
+    <i class="bi bi-file-pdf"></i> Download PDF
+</a>
+   
+    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') }}">
+        Enterprise ERP
+    </a>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-sm">
+        Dashboard
+    </a>
+</nav>
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Expense Management</h2>
+
+        <a href="{{ url_for('add_expense') }}" class="btn btn-primary">
+            + Add Expense
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Expense Title</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for expense in expenses %}
+                        <tr>
+                            <td>{{ expense.id }}</td>
+                            <td>{{ expense.title }}</td>
+                            <td>{{ expense.category or '-' }}</td>
+                            <td>₹{{ "%.2f"|format(expense.amount) }}</td>
+                            <td>{{ expense.expense_date.strftime("%d-%m-%Y") }}</td>
+                            <td>{{ expense.description or '-' }}</td>
+                        </tr>
+
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">
+                                No expenses recorded yet.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

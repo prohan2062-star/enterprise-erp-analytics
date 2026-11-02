@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+
+{% block title %}Create Sale | Enterprise ERP{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Create New Sale</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Select Product</label>
+
+                    <select name="product_id" id="product" class="form-select" required>
+                        <option value="">Choose Product</option>
+
+                        {% for product in products %}
+                        <option value="{{ product.id }}"
+                                data-price="{{ product.price }}"
+                                data-stock="{{ product.quantity }}">
+                            {{ product.name }} - ₹{{ product.price }}
+                            (Stock: {{ product.quantity }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Available Stock</label>
+                    <input type="text" id="stock" class="form-control" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" name="quantity" id="quantity"
+                           class="form-control" min="1" value="1" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Total Amount (₹)</label>
+                    <input type="text" id="total" class="form-control"
+                           value="0.00" readonly>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Save Sale
+                </button>
+
+                <a href="{{ url_for('sales') }}" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+const productSelect = document.getElementById("product");
+const quantityInput = document.getElementById("quantity");
+const stockInput = document.getElementById("stock");
+const totalInput = document.getElementById("total");
+
+function calculateTotal() {
+    const option = productSelect.options[productSelect.selectedIndex];
+
+    const price = parseFloat(option.dataset.price || 0);
+    const stock = parseInt(option.dataset.stock || 0);
+    const quantity = parseInt(quantityInput.value || 0);
+
+    stockInput.value = stock;
+    quantityInput.max = stock;
+
+    totalInput.value = (price * quantity).toFixed(2);
+}
+
+productSelect.addEventListener("change", calculateTotal);
+quantityInput.addEventListener("input", calculateTotal);
+</script>
+
+{% endblock %}

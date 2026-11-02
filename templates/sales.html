@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+
+{% block title %}Sales Management | Enterprise ERP{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a href="{{ url_for('export_report_pdf', report_type='sales') }}"
+   class="btn btn-light btn-sm">
+    <i class="bi bi-file-pdf"></i> Download PDF
+</a>
+
+    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') }}">
+        Enterprise ERP
+    </a>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-sm">
+        Dashboard
+    </a>
+</nav>
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Sales Management</h2>
+
+        <a href="{{ url_for('add_sale') }}" class="btn btn-primary">
+            + Create New Sale
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                            <th>Sale Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale.id }}</td>
+                            <td>{{ sale.product.name }}</td>
+                            <td>{{ sale.quantity }}</td>
+                            <td>₹{{ "%.2f"|format(sale.total_amount) }}</td>
+                            <td>{{ sale.sale_date.strftime("%d-%m-%Y %I:%M %p") }}</td>
+                        </tr>
+
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-4">
+                                No sales recorded yet.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

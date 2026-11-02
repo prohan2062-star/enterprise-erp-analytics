@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block title %}Add Employee | Enterprise ERP{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') }}">Enterprise ERP</a>
+    <a href="{{ url_for('employees') }}" class="btn btn-outline-light btn-sm">Back to Employees</a>
+</nav>
+
+<div class="container py-5">
+    <div class="auth-card mx-auto text-start">
+        <h3 class="mb-4">Add New Employee</h3>
+
+        <form method="POST">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="name" class="form-control mb-3"
+                   placeholder="Enter employee name" required>
+
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control mb-3"
+                   placeholder="Enter email" required>
+
+            <label class="form-label">Department</label>
+            <input type="text" name="department" class="form-control mb-3"
+                   placeholder="e.g. IT, HR, Finance">
+
+            <label class="form-label">Position</label>
+            <input type="text" name="position" class="form-control mb-3"
+                   placeholder="e.g. Software Developer">
+
+            <label class="form-label">Monthly Salary (₹)</label>
+            <input type="number" name="salary" class="form-control mb-4"
+                   placeholder="Enter salary" min="0" step="0.01" value="0">
+
+            <button type="submit" class="btn btn-primary w-100">
+                Save Employee
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

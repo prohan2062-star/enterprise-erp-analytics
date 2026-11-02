@@ -1,0 +1,419 @@
+
+body {
+    background: #f4f6fb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #101828, #263b68);
+}
+
+.auth-card {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card h2 {
+    font-weight: 700;
+    color: #172554;
+    margin-bottom: 10px;
+}
+
+.auth-card .form-control {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.auth-card .btn-primary {
+    padding: 12px;
+    border-radius: 8px;
+    background: #3157c8;
+    border: none;
+}
+
+.auth-card .btn-primary:hover {
+    background: #1e40af;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    border-left: 5px solid #3157c8;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h6 {
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.stat-card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #172554;
+}
+
+/* ===== ERP GLOBAL DESIGN ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #1e293b;
+    background: #f1f5f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #172554;
+    font-weight: 700;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+    background: linear-gradient(135deg, #101828, #263b68) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+.navbar .nav-link:hover {
+    color: #93c5fd !important;
+}
+
+/* ===== CONTAINERS ===== */
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* ===== TABLES ===== */
+
+.table {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background: #1e3a8a;
+    color: #fff;
+    padding: 14px;
+    border: none;
+}
+
+.table tbody td {
+    padding: 13px;
+}
+
+.table tbody tr:hover {
+    background: #eff6ff;
+}
+
+/* ===== FORMS ===== */
+
+.form-control,
+.form-select {
+    padding: 11px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #3157c8;
+    box-shadow: 0 0 0 3px rgba(49,87,200,0.12);
+}
+
+/* ===== BUTTONS ===== */
+
+.btn {
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== CONTENT CARDS ===== */
+
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(15,23,42,0.06);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    font-weight: 700;
+    padding: 16px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+}
+
+
+/* ===== PROFESSIONAL ERP DASHBOARD ===== */
+
+.dashboard-navbar {
+    background: linear-gradient(135deg, #101828, #263b68) !important;
+    min-height: 68px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.dashboard-container {
+    padding: 35px;
+}
+
+.dashboard-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-heading h2 {
+    font-size: 30px;
+    font-weight: 750;
+    margin-bottom: 5px;
+}
+
+.dashboard-heading p,
+.dashboard-section > p {
+    color: #64748b;
+}
+
+.dashboard-status {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 9px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dashboard-status i {
+    font-size: 9px;
+    margin-right: 5px;
+}
+
+/* STAT CARDS */
+
+.stat-card {
+    position: relative;
+    padding: 25px;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #3157c8;
+    box-shadow: 0 5px 20px rgba(15,23,42,0.05);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(15,23,42,0.10);
+}
+
+.stat-card h6 {
+    color: #64748b;
+    font-size: 14px;
+    margin: 15px 0 8px;
+}
+
+.stat-card h2 {
+    font-size: 32px;
+    font-weight: 750;
+    color: #172554;
+}
+
+.stat-card small {
+    color: #94a3b8;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #3157c8;
+    font-size: 23px;
+}
+
+.stat-products {
+    border-left-color: #16a34a;
+}
+
+.stat-products .stat-icon {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.stat-sales {
+    border-left-color: #d97706;
+}
+
+.stat-sales .stat-icon {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.stat-expenses {
+    border-left-color: #dc2626;
+}
+
+.stat-expenses .stat-icon {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* MANAGEMENT MODULES */
+
+.dashboard-section {
+    margin-top: 45px;
+}
+
+.dashboard-section h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.module-card {
+    display: block;
+    height: 100%;
+    padding: 25px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(15,23,42,0.04);
+    transition: 0.3s;
+}
+
+.module-card:hover {
+    transform: translateY(-6px);
+    border-color: #3157c8;
+    box-shadow: 0 12px 25px rgba(15,23,42,0.09);
+}
+
+.module-icon {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    color: #3157c8;
+    border-radius: 12px;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.module-card h5 {
+    color: #172554;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.module-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.module-card span {
+    color: #3157c8;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px 15px;
+    }
+
+    .dashboard-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .dashboard-heading h2 {
+        font-size: 24px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .module-card {
+        padding: 20px;
+    }
+
+    .dashboard-navbar {
+        padding: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-navbar .navbar-brand {
+        font-size: 16px;
+    }
+
+    .dashboard-navbar .ms-auto span {
+        font-size: 12px;
+    }
+}

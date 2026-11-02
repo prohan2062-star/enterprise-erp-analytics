@@ -1,0 +1,145 @@
+
+{% extends "base.html" %}
+
+{% block title %}Analytics | Enterprise ERP{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold" href="{{ url_for('dashboard') }}">
+        Enterprise ERP
+    </a>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light btn-sm">
+        Dashboard
+    </a>
+</nav>
+
+<div class="container-fluid p-4">
+
+    <h2 class="mb-4">Business Analytics</h2>
+
+    <!-- Statistics -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h6>Total Revenue</h6>
+                <h2 class="text-success">
+                    ₹{{ "%.2f"|format(total_revenue) }}
+                </h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h6>Total Expenses</h6>
+                <h2 class="text-danger">
+                    ₹{{ "%.2f"|format(total_expenses) }}
+                </h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <h6>Net Profit / Loss</h6>
+                <h2 class="{% if net_profit >= 0 %}text-success{% else %}text-danger{% endif %}">
+                    ₹{{ "%.2f"|format(net_profit) }}
+                </h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Charts -->
+    <div class="row g-4">
+
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="mb-3">Monthly Sales Report</h5>
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="mb-3">Expense Categories</h5>
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Data from Flask
+<div id="chartData"
+     data-sales-labels='{{ monthly_sales | map(attribute="month") | list | tojson }}'
+     data-sales-values='{{ monthly_sales | map(attribute="total") | list | tojson }}'
+     data-expense-labels='{{ expense_categories | map(attribute=0) | list | tojson }}'
+     data-expense-values='{{ expense_categories | map(attribute=1) | list | tojson }}'>
+</div>
+
+    // Monthly Sales Chart
+    new Chart(document.getElementById("salesChart"), {
+        type: "bar",
+        data: {
+            labels: salesLabels,
+            datasets: [{
+                label: "Sales Revenue (₹)",
+                data: salesValues,
+                backgroundColor: "#0d6efd",
+                borderRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+
+    // Expense Categories Chart
+    new Chart(document.getElementById("expenseChart"), {
+        type: "doughnut",
+        data: {
+            labels: expenseLabels,
+            datasets: [{
+                data: expenseValues,
+                backgroundColor: [
+                    "#0d6efd",
+                    "#dc3545",
+                    "#198754",
+                    "#ffc107",
+                    "#6f42c1",
+                    "#fd7e14",
+                    "#20c997"
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "bottom"
+                }
+            }
+        }
+    });
+
+});
+</script>
+
+{% endblock %}

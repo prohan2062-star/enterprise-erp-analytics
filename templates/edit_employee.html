@@ -1,0 +1,63 @@
+ {% extends "base.html" %}
+
+{% block title %}Edit Employee | Enterprise ERP{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning">
+            <h4 class="mb-0">Edit Employee</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Employee Name</label>
+                    <input type="text" name="name" class="form-control"
+                           value="{{ employee.name }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control"
+                           value="{{ employee.email }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Department</label>
+                    <input type="text" name="department" class="form-control"
+                           value="{{ employee.department or '' }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Position</label>
+                    <input type="text" name="position" class="form-control"
+                           value="{{ employee.position or '' }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Salary</label>
+                    <input type="number" name="salary" class="form-control"
+                           value="{{ employee.salary or 0 }}"
+                           min="0" step="0.01" required>
+                </div>
+
+                <button type="submit" class="btn btn-warning">
+                    Update Employee
+                </button>
+
+                <a href="{{ url_for('employees') }}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
